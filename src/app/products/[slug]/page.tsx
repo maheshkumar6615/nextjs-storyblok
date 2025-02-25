@@ -5,7 +5,7 @@ import { getStoryblokApi } from "@storyblok/react/rsc";
 const fetchProductPage = async (slug: string) => {
   const client = getStoryblokApi();
   const response = await client.get(`cdn/stories/products/${slug}`, {
-    version: "draft",
+    version: "published",
   });
   return response?.data?.story;
 };
