@@ -1,8 +1,10 @@
 import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
-import Banner from "./app/components/Banner/Banner";
-import ProductDetails from "./app/components/ProductDetails/ProductDetails";
-import Grid from "./app/components/Grid/Grid";
-import Text from "./app/components/Text/Text";
+import Banner from "./app/components/Banner";
+import ProductDetails from "./app/components/ProductDetails";
+import Grid from "./app/components/Grid";
+import Text from "./app/components/Text";
+import Page from "./app/components/Page";
+import Card from "./app/components/Card";
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.STORYBLOK_TOKEN,
@@ -11,10 +13,11 @@ export const getStoryblokApi = storyblokInit({
   },
   use: [apiPlugin],
   components: {
+    page: Page,
     banner: Banner,
-    product: ProductDetails,
     text: Text,
     grid: Grid,
+    card: Card,
   },
   enableFallbackComponent: true,
 });

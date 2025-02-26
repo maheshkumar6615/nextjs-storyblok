@@ -16,7 +16,8 @@
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.85.0",
-    "storyblok-js-client": "^6.10.7"
+    "storyblok-js-client": "^6.10.7",
+    "storyblok-rich-text-react-renderer": "^2.9.2"
   },
   "devDependencies": {
     "@types/node": "^20",
