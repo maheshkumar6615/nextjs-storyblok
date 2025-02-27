@@ -1,6 +1,7 @@
 import React from "react";
-import ProductDetails from "../../components/ProductDetails/ProductDetails";
-import { getStoryblokApi } from "@storyblok/react/rsc";
+import ProductDetails from "../../components/ProductDetails";
+import { getStoryblokApi } from "@/storyblok";
+import { StoryblokProvider } from "@/app/components/StoryblokProvider";
 
 const fetchProductPage = async (slug: string) => {
   const client = getStoryblokApi();
@@ -20,13 +21,16 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
   }
 
   return (
-    <div className="p-8">
-      <ProductDetails
-        image={story.content.Image.filename}
-        title={story.content.Title}
-        description={story.content.Description}
-      />
-    </div>
+    <StoryblokProvider>
+      <div className="p-8">
+            <ProductDetails
+              image={story.content.Image.filename}
+              title={story.content.Title}
+              description={story.content.Description}
+            />
+          </div>
+    </StoryblokProvider>
+    
   );
 };
 

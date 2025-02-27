@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@storyblok/js": "^3.2.2",
     "@storyblok/react": "^4.4.0",
     "autoprefixer": "^10.4.20",
-    "next": "14.2.24",
+    "next": "^14.2.24",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.85.0"
+    "sass": "^1.85.0",
+    "storyblok-js-client": "^6.10.7",
+    "storyblok-rich-text-react-renderer": "^2.9.2"
   },
   "devDependencies": {
     "@types/node": "^20",
