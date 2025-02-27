@@ -1,6 +1,5 @@
 import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
 import Banner from "./app/components/Banner";
-import ProductDetails from "./app/components/ProductDetails";
 import Grid from "./app/components/Grid";
 import Text from "./app/components/Text";
 import Page from "./app/components/Page";

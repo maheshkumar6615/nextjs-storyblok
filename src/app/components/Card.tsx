@@ -1,3 +1,5 @@
+import { storyblokEditable } from "@storyblok/react/rsc";
+
 const Card = ( params: any ) => {
   return(
     <div
@@ -11,6 +13,7 @@ const Card = ( params: any ) => {
       color: 'black',
       textAlign: 'center',
     }}
+    {...storyblokEditable(params.blok)}
   >
     <h3>{params.blok.title}</h3>
     <a

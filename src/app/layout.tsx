@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "./styles/Banner.scss";
 import "./styles/ProductDetails.scss";
-import Link from "next/link";
 import { StoryblokProvider } from "./components/StoryblokProvider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,12 +21,6 @@ export default function RootLayout({
     <StoryblokProvider>
       <html lang="en">
         <body className={`${inter.className} bg-blue-50`}>
-          <header>
-            <nav className="container mx-auto px-4 w-full py-8 flex justify-between">
-              <Link href={"/"}>Home</Link>
-              <Link href={"/products"}>Products</Link>
-            </nav>
-          </header>
           {children}
         </body>
       </html>
