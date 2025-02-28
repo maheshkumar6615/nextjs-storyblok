@@ -3,34 +3,20 @@ import { storyblokEditable } from "@storyblok/react/rsc";
 const Banner = (params: any) => {
   return (
     <div
-      className="banner"
+      className="banner flex flex-col items-center justify-center text-white text-center"
       style={{
         backgroundImage: `url(${params.blok.backgroundImage.filename})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         width: "100%",
         height: "400px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "white",
-        textAlign: "center",
       }}
       {...storyblokEditable(params.blok)}
     >
-      <h3>{params.blok.title}</h3>
+      <h3 className="text-3xl font-bold">{params.blok.title}</h3>
       <a
         href={params.blok.button.url}
-        className="banner-button"
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#0070f3",
-          color: "white",
-          textDecoration: "none",
-          borderRadius: "5px",
-          marginTop: "20px",
-        }}
+        className="mt-5 px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
       >
         Explore Recipes
       </a>

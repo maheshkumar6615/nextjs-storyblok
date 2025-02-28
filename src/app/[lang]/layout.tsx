@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import "./styles/Banner.scss";
-import "./styles/ProductDetails.scss";
-import { StoryblokProvider } from "./components/StoryblokProvider";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import Theme from "./components/Theme";
+import "../styles/globals.css";
+import { StoryblokProvider } from "../components/StoryblokProvider";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import Theme from "../components/Theme";
 import { getSiteConfig } from "@/lib/getSiteConfig";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,10 +16,12 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { lang: string };
 }) {
-  const siteConfig = await getSiteConfig();
+  const siteConfig = await getSiteConfig(params.lang);
   const blok = siteConfig?.content;
 
   return (
@@ -31,7 +31,7 @@ export default async function RootLayout({
           <link rel="icon" href={siteConfig?.content?.favicon?.filename || "favicon.ico"} />
         </head>
         <body className={`${inter.className} bg-blue-50`}>
-          <Theme />
+          <Theme theme={siteConfig?.content?.site} />
           <Nav links={siteConfig?.content?.navigation} blok={blok} />
           <main className="container mx-auto">{children}</main>
           <Footer text={siteConfig?.content?.footerBlocks} blok={blok} />

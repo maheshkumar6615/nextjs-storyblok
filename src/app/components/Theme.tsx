@@ -1,9 +1,7 @@
-const Theme = () => {
+const Theme = ({ theme }: { theme: string }) => {
   return (
-      <p>Theme</p>
+    <input type="hidden" value={theme} />
   );
 };
 
 export default Theme;
-
-  
