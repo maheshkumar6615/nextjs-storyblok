@@ -1,9 +1,15 @@
-import { getSiteConfig } from '@/lib/getSiteConfig';
+import { getSiteConfig } from "@/lib/getSiteConfig";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Theme from "../components/Theme";
+import { notFound } from "next/navigation";
 
 export default async function SiteConfigPage() {
+  // Allow access only in development or when Storyblok editor is active
+  if (process.env.NODE_ENV === "production" && !checkStoryblokPreview()) {
+    notFound(); // This will render the Next.js 404 page
+  }
+
   const siteConfig = await getSiteConfig();
   const blok = siteConfig?.content?.blok;
 
@@ -21,3 +27,12 @@ export default async function SiteConfigPage() {
     </div>
   );
 }
+
+function checkStoryblokPreview() {
+  if (typeof window !== "undefined") {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.has("_storyblok");
+  }
+  return false;
+}
+

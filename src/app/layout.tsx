@@ -22,7 +22,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const siteConfig = await getSiteConfig();
-  const blok = siteConfig?.content?.blok;
+  const blok = siteConfig?.content;
 
   return (
     <StoryblokProvider>
