@@ -1,5 +1,5 @@
 import React from 'react';
-import { getStoryblokApi } from "@/storyblok";
+import { getStoryblokApi } from "@/lib/storyblok";
 import { StoryblokStory } from "@storyblok/react/rsc";
 
 const fetchNotFoundPage = async () => {

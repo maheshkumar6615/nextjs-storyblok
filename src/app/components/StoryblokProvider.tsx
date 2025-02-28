@@ -1,7 +1,7 @@
 "use client";
 
 import type { PropsWithChildren } from "react";
-import { getStoryblokApi } from "@/storyblok";
+import { getStoryblokApi } from "@/lib/storyblok";
 
 
 export const StoryblokProvider = ({ children }: PropsWithChildren) => {

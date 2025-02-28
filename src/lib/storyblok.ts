@@ -1,9 +1,9 @@
 import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
-import Banner from "./app/components/Banner";
-import Grid from "./app/components/Grid";
-import Text from "./app/components/Text";
-import Page from "./app/components/Page";
-import Card from "./app/components/Card";
+import Banner from "../app/components/Banner";
+import Grid from "../app/components/Grid";
+import Text from "../app/components/Text";
+import Page from "../app/components/Page";
+import Card from "../app/components/Card";
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.STORYBLOK_TOKEN,

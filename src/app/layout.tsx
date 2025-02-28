@@ -22,6 +22,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const siteConfig = await getSiteConfig();
+  const blok = siteConfig?.content?.blok;
 
   return (
     <StoryblokProvider>
@@ -31,9 +32,9 @@ export default async function RootLayout({
         </head>
         <body className={`${inter.className} bg-blue-50`}>
           <Theme />
-          <Nav links={siteConfig?.content?.navigation} />
+          <Nav links={siteConfig?.content?.navigation} blok={blok} />
           <main className="container mx-auto">{children}</main>
-          <Footer text={siteConfig?.content?.footerBlocks || "Default Footer"} />
+          <Footer text={siteConfig?.content?.footerBlocks} blok={blok} />
         </body>
       </html>
     </StoryblokProvider>

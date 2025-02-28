@@ -1,6 +1,6 @@
 import React from "react";
 import ProductDetails from "@/app/components/ProductDetails";
-import { getStoryblokApi } from "@/storyblok";
+import { getStoryblokApi } from "@/lib/storyblok";
 import { StoryblokProvider } from "@/app/components/StoryblokProvider";
 import NotFoundPage from "@/app/404";
 

@@ -1,4 +1,4 @@
-import { getStoryblokApi } from "@/storyblok";
+import { getStoryblokApi } from "@/lib/storyblok";
 import { StoryblokStory } from "@storyblok/react/rsc";
 import NotFoundPage from "@/app/404";
 

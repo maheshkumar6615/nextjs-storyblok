@@ -1,4 +1,4 @@
-import { getStoryblokApi } from "@/storyblok";
+import { getStoryblokApi } from "@/lib/storyblok";
 
 export const getSiteConfig = async () => {
     try {
