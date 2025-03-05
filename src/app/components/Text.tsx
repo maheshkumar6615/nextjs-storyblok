@@ -4,7 +4,7 @@ import { storyblokEditable } from "@storyblok/react/rsc";
 const Text = (params: any) => {
   //console.log(params.blok);
   return (
-    <div {...storyblokEditable(params.blok)}>{render(params.blok.Text)}</div>
+    <div {...storyblokEditable(params.blok)} style={{marginBottom: '1rem',}}>{render(params.blok.Text)}</div>
   );
 };
 

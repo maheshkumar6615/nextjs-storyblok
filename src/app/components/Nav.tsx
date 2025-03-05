@@ -9,11 +9,11 @@ interface NavProps {
     component: string;
     _editable: string;
   }[];
-  blok: any; // Add the blok prop
+  blok: any;
 }
 
 const Nav = ({ links, blok }: NavProps) => (
-  <nav className="bg-gray-900 text-white p-4 text-center" {...storyblokEditable(blok)}>
+  <nav className="bg-gray-900 text-white p-4 text-center" style={{marginBottom: '1rem',}} {...storyblokEditable(blok)}>
     {links.map((linkItem) => (
       <Link key={linkItem._uid} href={linkItem.link.url} className="mr-4 hover:text-gray-300">
         {linkItem.title}

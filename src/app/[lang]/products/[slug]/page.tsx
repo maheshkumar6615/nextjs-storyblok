@@ -1,40 +1,48 @@
 import React from "react";
 import ProductDetails from "@/app/components/ProductDetails";
+import CookingInstructions from "@/app/components/CookingInstructions";
 import { getStoryblokApi } from "@/lib/storyblok";
-import { StoryblokProvider } from "@/app/components/StoryblokProvider";
 import NotFoundPage from "@/app/404";
+import { StoryblokStory } from "@storyblok/react/rsc";
 
 const fetchProductPage = async (lang: string, slug: string) => {
-  try{
+  try {
+    const productResponse = await fetch(`http://a2df20be227834da5bc1416149fe39e2-1940091949.us-east-1.elb.amazonaws.com/api/products/${slug}`);
+    const productData = await productResponse.json();
+
     const client = getStoryblokApi();
-    const response = await client.get(`cdn/stories/${lang}/products/${slug}`, {
+    const productRelated = await client.get(`cdn/stories/${lang}/products/${slug}`, {
       version: "draft",
       cv: Date.now(),
     });
-    return response?.data?.story;
-  }catch(error){
+
+    return {
+      product: productData,
+      productRelated: productRelated?.data?.story,
+    };
+  } catch (error) {
     console.error("Error fetching page:", error);
     return null;
   }
 };
 
 const ProductPage = async ({ params }: { params: { lang: string; slug: string } }) => {
-  const story = await fetchProductPage(params.lang, params.slug);
+  const data = await fetchProductPage(params.lang, params.slug);
 
-  if (!story) {
+  if (!data || !data.product || !data.productRelated) {
     return <NotFoundPage />;
   }
 
   return (
-    <StoryblokProvider>
       <div className="p-8">
         <ProductDetails
-          image={story.content.Image.filename}
-          title={story.content.Title}
-          description={story.content.Description}
+          image={data.product.dataPim.productToPrimaryImage}
+          title={data.product.jcrContent.jcrTitle}
+          description={data.product.dataPim.productDescription}
         />
+        <CookingInstructions instructions={data.product.dataPim.preparationInstructions} />
+        <StoryblokStory story={data.productRelated} />
       </div>
-    </StoryblokProvider>
   );
 };
 

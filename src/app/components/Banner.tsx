@@ -10,10 +10,11 @@ const Banner = (params: any) => {
         backgroundPosition: "center",
         width: "100%",
         height: "400px",
+        marginBottom: "3rem",
       }}
       {...storyblokEditable(params.blok)}
     >
-      <h3 className="text-3xl font-bold">{params.blok.title}</h3>
+      <h1 className="text-3xl font-bold">{params.blok.title}</h1>
       <a
         href={params.blok.button.url}
         className="mt-5 px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
