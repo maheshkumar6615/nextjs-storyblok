@@ -11,7 +11,7 @@ const fetchProductPage = async (lang: string, slug: string) => {
     const productData = await productResponse.json();
 
     const client = getStoryblokApi();
-    const productRelated = await client.get(`cdn/stories/${lang}/products/${slug}`, {
+    const productRelated = await client.get(`cdn/stories/morning-star/${lang}/products/${slug}`, {
       version: "draft",
       cv: Date.now(),
     });

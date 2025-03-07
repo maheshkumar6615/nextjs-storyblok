@@ -21,7 +21,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  const siteConfig = await getSiteConfig(params.lang);
+  const siteConfig = await getSiteConfig(params.lang, "eggos");
   const blok = siteConfig?.content;
 
   return (

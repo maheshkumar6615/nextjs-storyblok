@@ -5,7 +5,7 @@ import NotFoundPage from "@/app/404";
 const fetchHomePage = async (lang: string) => {
   try{
     const client = getStoryblokApi();
-    const response = await client.get(`cdn/stories/${lang}/home`, {
+    const response = await client.get(`cdn/stories/eggos/${lang}/home`, {
       version: "draft",
       cv: Date.now(),
     });

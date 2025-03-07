@@ -1,9 +1,9 @@
 import { getStoryblokApi } from "@/lib/storyblok";
 
-export const getSiteConfig = async (lang: string) => {
+export const getSiteConfig = async (lang: string, site : string) => {
   try {
     const client = getStoryblokApi();
-    const response = await client.get(`cdn/stories/${lang}/site-config`, {
+    const response = await client.get(`cdn/stories/${site}/${lang}/site-config`, {
       version: "draft",
       cv: Date.now(),
     });
