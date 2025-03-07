@@ -1,5 +1,4 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   images: {
     remotePatterns: [
       {
@@ -22,7 +21,7 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'https://nextjs-storyblok-red.vercel.app', 
+            value: 'nextjs-storyblok-red.vercel.app',
           },
         ],
         destination: '/morning-star/:path*',
@@ -32,7 +31,7 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'nextjs-storyblok-git-develop-maheshs-projects-2bf9f744.vercel.app', 
+            value: 'nextjs-storyblok-naphngp31-maheshs-projects-2bf9f744.vercel.app',
           },
         ],
         destination: '/eggos/:path*',
@@ -40,5 +39,3 @@ const nextConfig = {
     ];
   },
 };
-
-export default nextConfig;
