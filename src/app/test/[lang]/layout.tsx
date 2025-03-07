@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "../styles/globals.css";
-import { StoryblokProvider } from "../components/StoryblokProvider";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
-import Theme from "../components/Theme";
+import "../../styles/globals.css";
+import { StoryblokProvider } from "../../components/StoryblokProvider";
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+import Theme from "../../components/Theme";
 import { getSiteConfig } from "@/lib/getSiteConfig";
 
 const inter = Inter({ subsets: ["latin"] });
