@@ -15,7 +15,7 @@ const PromotionCard = (params: any) => {
         {isInternalLink ? (
           <Link href={`/${blok.promotionLink.cached_url}`} legacyBehavior>
             <a className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-              View Tour
+              View Product
             </a>
           </Link>
         ) : (
@@ -25,7 +25,7 @@ const PromotionCard = (params: any) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            View Tour
+            View Product
           </a>
         )}
       </div>
