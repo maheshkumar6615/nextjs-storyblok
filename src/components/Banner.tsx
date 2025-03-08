@@ -19,7 +19,7 @@ const Banner = (params: any) => {
         href={params.blok.button.url}
         className="mt-5 px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
       >
-        Explore Recipes
+        Explore Products
       </a>
     </div>
   );
