@@ -1,6 +1,6 @@
 import React from "react";
-import ProductDetails from "@/app/components/ProductDetails";
-import CookingInstructions from "@/app/components/CookingInstructions";
+import ProductDetails from "@/components/ProductDetails";
+import CookingInstructions from "@/components/CookingInstructions";
 import { getStoryblokApi } from "@/lib/storyblok";
 import NotFoundPage from "@/app/404";
 import { StoryblokStory } from "@storyblok/react/rsc";
