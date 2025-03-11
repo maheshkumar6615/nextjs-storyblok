@@ -2,11 +2,24 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies to local folder:
+```bash
+npm run dev
+```
+
+Create a local environment variables file to reference the remote storyblok CMS data.
+Create this file in the repo root ".env.local" and in it write:
+```bash
+STORYBLOK_TOKEN=[ your token ]
+NODE_ENV=[ your env name ]
+```
+
+Run local development server:
 
 ```bash
 npm run dev
-# or
+
+# or...
 yarn dev
 # or
 pnpm dev
