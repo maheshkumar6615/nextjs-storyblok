@@ -1,6 +1,6 @@
 import React from "react";
-import ProductDetails from "@/app/components/ProductDetails";
-import CookingInstructions from "@/app/components/CookingInstructions";
+import ProductDetails from "@/components/ProductDetails";
+import CookingInstructions from "@/components/CookingInstructions";
 import { getStoryblokApi } from "@/lib/storyblok";
 import NotFoundPage from "@/app/404";
 import { StoryblokStory } from "@storyblok/react/rsc";
@@ -11,7 +11,7 @@ const fetchProductPage = async (lang: string, slug: string) => {
     const productData = await productResponse.json();
 
     const client = getStoryblokApi();
-    const productRelated = await client.get(`cdn/stories/${lang}/products/${slug}`, {
+    const productRelated = await client.get(`cdn/stories/morning-star/${lang}/products/${slug}`, {
       version: "draft",
       cv: Date.now(),
     });

@@ -2,10 +2,10 @@ import { getStoryblokApi } from "@/lib/storyblok";
 import { StoryblokStory } from "@storyblok/react/rsc";
 import NotFoundPage from "@/app/404";
 
-const fetchHomePage = async (lang: string, slug: string) => {
+const fetchPage = async (lang: string, slug: string) => {
   try{
     const client = getStoryblokApi();
-    const response = await client.get(`cdn/stories/${lang}/${slug}`, {
+    const response = await client.get(`cdn/stories/eggos/${lang}/${slug}`, {
       version: "draft",
       cv: Date.now(),
     });
@@ -17,7 +17,7 @@ const fetchHomePage = async (lang: string, slug: string) => {
 };
 
 const HomePage = async ({ params }: { params: { lang: string, slug: string } }) => {
-  const story = await fetchHomePage(params.lang, params.slug);
+  const story = await fetchPage(params.lang, params.slug);
   if (!story) {
     return <NotFoundPage />;
   }

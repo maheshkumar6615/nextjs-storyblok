@@ -1,6 +1,8 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
+import Link from "next/link";
 
 const Card = (params: any) => {
+  const isInternalLink = params.blok.Link.linktype === 'story';
   return (
     <div
       className="card"
@@ -22,6 +24,22 @@ const Card = (params: any) => {
       {...storyblokEditable(params.blok)}
     >
       <h3 style={{ marginBottom: '10px', color: 'black' }}>{params.blok.title}</h3>
+      {isInternalLink ? (
+      <Link href={`/${params.blok.Link.cached_url}`} legacyBehavior>
+        <a
+          className="card-button"
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#0070f3',
+            color: 'white',
+            textDecoration: 'none',
+            borderRadius: '5px',
+          }}
+        >
+          View Product
+        </a>
+      </Link>
+      ) : (
       <a
         href={params.blok.Link.url}
         className="card-button"
@@ -33,8 +51,9 @@ const Card = (params: any) => {
           borderRadius: '5px',
         }}
       >
-        Link
+        View Product
       </a>
+      )}
     </div>
   );
 };
