@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 Install dependencies to local folder:
 ```bash
-npm run dev
+npm install
 ```
 
 Create a local environment variables file to reference the remote storyblok CMS data.
