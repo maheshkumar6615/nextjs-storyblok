@@ -7,7 +7,7 @@ import { StoryblokStory } from "@storyblok/react/rsc";
 
 const fetchProductPage = async (lang: string, slug: string) => {
   try {
-    const productResponse = await fetch(`http://a2df20be227834da5bc1416149fe39e2-1940091949.us-east-1.elb.amazonaws.com/api/products/${slug}`);
+    const productResponse = await fetch(`http://aa1df0c726915438cba6057483f83693-1907848014.us-east-1.elb.amazonaws.com/api/products/${slug}`);
     const productData = await productResponse.json();
 
     const client = getStoryblokApi();

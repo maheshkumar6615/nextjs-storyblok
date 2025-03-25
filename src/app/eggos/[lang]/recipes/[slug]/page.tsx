@@ -7,11 +7,11 @@ import { StoryblokStory } from "@storyblok/react/rsc";
 
 const fetchProductPage = async (lang: string, slug: string) => {
   try {
-    const productResponse = await fetch(`http://aa1df0c726915438cba6057483f83693-1907848014.us-east-1.elb.amazonaws.com/api/products/${slug}`);
+    const productResponse = await fetch(`http://aa1df0c726915438cba6057483f83693-1907848014.us-east-1.elb.amazonaws.com/api/recipes/${slug}`);
     const productData = await productResponse.json();
 
     const client = getStoryblokApi();
-    const productRelated = await client.get(`cdn/stories/morning-star/${lang}/products/${slug}`, {
+    const productRelated = await client.get(`cdn/stories/eggos/${lang}/recipes/${slug}`, {
       version: "draft",
       cv: Date.now(),
     });
@@ -36,11 +36,11 @@ const ProductPage = async ({ params }: { params: { lang: string; slug: string } 
   return (
       <div className="p-8">
         <ProductDetails
-          image={data.product.dataPim.productToPrimaryImage}
-          title={data.product.jcrContent.jcrTitle}
-          description={data.product.dataPim.productDescription}
+          image={data.product.recipeToPrimaryImage}
+          title={data.product.recipeWebName}
+          description={data.product.recipeDescription}
         />
-        <CookingInstructions instructions={data.product.dataPim.preparationInstructions} />
+        <CookingInstructions instructions={data.product.recipeDirections} />
         <StoryblokStory story={data.productRelated} />
       </div>
   );
