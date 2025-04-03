@@ -4,7 +4,7 @@ export const getSiteConfig = async (lang: string, site : string) => {
   try {
     const client = getStoryblokApi();
     const response = await client.get(`cdn/stories/${site}/${lang}/site-config`, {
-      version: "draft",
+      version: process.env.VERSION === "preview" ? "draft" : "published",
       cv: Date.now(),
     });
     return response?.data?.story;

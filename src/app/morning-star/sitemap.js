@@ -4,7 +4,7 @@ const fetchAllPages = async () => {
   try{
     const client = getStoryblokApi();
     const response = await client.get(`cdn/stories`, {
-      version: "draft",
+      version: process.env.VERSION === "preview" ? "draft" : "published",
       cv: Date.now(),
       starts_with: "morning-star",
     });

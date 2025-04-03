@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../../../styles/globals.css";
 import { StoryblokProvider } from "../../../components/StoryblokProvider";
-import Nav from "../../../components/Nav";
+import Navigation from "../../../components/Navigation";
 import Footer from "../../../components/Footer";
 import Theme from "../../../components/Theme";
 import { getSiteConfig } from "@/lib/getSiteConfig";
@@ -32,7 +32,7 @@ export default async function RootLayout({
         </head>
         <body className={`${inter.className} bg-blue-50`}>
           <Theme theme={siteConfig?.content?.site} />
-          <Nav links={siteConfig?.content?.navigation} blok={blok} />
+          <Navigation navigation={siteConfig?.content?.navigation[0]} />
           <main className="container mx-auto">{children}</main>
           <Footer text={siteConfig?.content?.footerBlocks} blok={blok} />
         </body>

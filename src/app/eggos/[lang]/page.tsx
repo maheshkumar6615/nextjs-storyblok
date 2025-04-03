@@ -6,7 +6,7 @@ const fetchHomePage = async (lang: string) => {
   try{
     const client = getStoryblokApi();
     const response = await client.get(`cdn/stories/eggos/${lang}/home`, {
-      version: "draft",
+      version: process.env.VERSION === "preview" ? "draft" : "published",
       cv: Date.now(),
     });
     return response?.data?.story;

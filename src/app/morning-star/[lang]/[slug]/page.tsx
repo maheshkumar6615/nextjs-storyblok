@@ -6,7 +6,7 @@ const fetchPage = async (lang: string, slug: string) => {
   try{
     const client = getStoryblokApi();
     const response = await client.get(`cdn/stories/morning-star/${lang}/${slug}`, {
-      version: "draft",
+      version: process.env.VERSION === "preview" ? "draft" : "published",
       cv: Date.now(),
     });
     return response?.data?.story;

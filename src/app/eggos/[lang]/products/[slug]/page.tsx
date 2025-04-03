@@ -12,7 +12,7 @@ const fetchProductPage = async (lang: string, slug: string) => {
 
     const client = getStoryblokApi();
     const productRelated = await client.get(`cdn/stories/eggos/${lang}/products/${slug}`, {
-      version: "draft",
+      version: process.env.VERSION === "preview" ? "draft" : "published",
       cv: Date.now(),
     });
 
