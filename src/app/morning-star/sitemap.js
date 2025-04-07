@@ -18,10 +18,6 @@ const fetchAllPages = async () => {
 
 export default async function sitemap() {
   const pages = await fetchAllPages();
-  console.log("pages", pages);
-  pages.forEach((page) => {
-    console.log("page", page);
-  });
 
   const sitemapEntries = pages.map((page) => ({
     url: `http://localhost:3000/${page.full_slug}`,

@@ -3,10 +3,11 @@ import { Inter } from "next/font/google";
 import "../../../styles/globals.css";
 import "../../../styles/common.scss";
 import Navigation from "../../../components/Navigation";
-import Footer from "../../../components/Footer";
+import Footer from "../../../components/footerNavigation";
 import { StoryblokProvider } from "../../../components/StoryblokProvider";
 import Theme from "../../../components/Theme";
 import { getSiteConfig } from "@/lib/getSiteConfig";
+import SocialIcons from "@/components/SocialIcons";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,6 @@ export default async function RootLayout({
   params: { lang: string };
 }) {
   const siteConfig = await getSiteConfig(params.lang, "morning-star");
-  const blok = siteConfig?.content;
 
   return (
     <StoryblokProvider>
@@ -35,7 +35,12 @@ export default async function RootLayout({
           <Theme theme={siteConfig?.content?.site} />
           <Navigation navigation={siteConfig?.content?.navigation[0]} />
           <main className="container mx-auto">{children}</main>
-          <Footer text={siteConfig?.content?.footerBlocks} blok={blok} />
+          <SocialIcons
+            socialIcons={siteConfig?.content?.socialIcons}
+            copyRightSymbol={siteConfig?.content?.copyRightSymbol}
+            copyRightDescription={siteConfig?.content?.copyRightDescription}
+          />
+          <Footer footerBlocks={siteConfig?.content?.footerBlocks} />
         </body>
       </html>
     </StoryblokProvider>

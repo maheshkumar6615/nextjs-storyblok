@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface SecondaryNavItem {
   _uid: string;
@@ -62,10 +63,13 @@ const Navigation = ({ navigation }: NavigationProps) => {
       <div className="content_wrapper">
         {/* Logo */}
         <Link href={`/${logoLink.cached_url}`}>
-          <img
+        <Image
+            width={100}
+            height={100}
             src={logo.filename}
             alt={logo.meta_data.alt}
             className="header-logo"
+            priority
           />
         </Link>
 

@@ -104,3 +104,261 @@
 		}
 	}
 }
+
+
+
+//footer
+
+
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: 1rem;
+  
+	.content_wrapper {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	}
+  
+	#back-to-top {
+	  margin-bottom: 1rem;
+	  font-size: 0.9rem;
+	  color: #00bcd4;
+	  text-decoration: none;
+  
+	  &:hover {
+		text-decoration: underline;
+	  }
+	}
+  
+	.footer-nav--main {
+	  ul {
+		list-style: none;
+		padding: 0;
+  
+		li {
+		  margin-bottom: 0.5rem;
+  
+		  a {
+			color: #fff;
+			text-decoration: none;
+  
+			&:hover {
+			  color: #00bcd4;
+			}
+		  }
+		}
+	  }
+	}
+  }
+
+
+
+
+//social icons
+.content_wrapper {
+	text-align: center; /* Center-align all content inside the wrapper */
+  }
+  
+  .copyright {
+	margin-top: 1rem;
+	font-size: 0.875rem;
+	color: #666;
+	text-align: center; /* Ensure the copyright text is centered */
+  }
+
+
+.social_icons {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	align-items: center;
+  
+	.social-icon {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  text-decoration: none;
+	  color: #333;
+  
+	  &:hover {
+		color: #0070f3;
+	  }
+  
+	  .social-icon-img {
+		width: 40px;
+		height: 40px;
+		margin-bottom: 0.5rem;
+	  }
+  
+	  .instagram-icon-span,
+	  .facebook-icon-span {
+		font-size: 0.9rem;
+		text-transform: capitalize;
+	  }
+	}
+  }
+
+
+
+  //category grid
+
+
+  .products-featured {
+	background-color: #f9f9f9;
+	padding: 2rem 0;
+  
+	.content_wrapper {
+	  max-width: 1200px;
+	  margin: 0 auto;
+	  padding: 0 1rem;
+	}
+  
+	.products-featured-row {
+	  display: flex;
+	  flex-wrap: wrap;
+	  gap: 1.5rem;
+	  justify-content: center;
+	}
+  
+	.product-category {
+	  display: block;
+	  text-decoration: none;
+	  color: inherit;
+	  width: calc(33.333% - 1rem); // 3 items per row
+	  max-width: 300px;
+	  border: 1px solid #eaeaea;
+	  border-radius: 8px;
+	  overflow: hidden;
+	  background-color: #fff;
+	  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+	  &:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	  }
+  
+	  .product-primary-image,
+	  .product-secondary-image {
+		position: relative;
+		width: 100%;
+		height: 200px;
+		overflow: hidden;
+  
+		img {
+		  width: 100%;
+		  height: 100%;
+		  object-fit: cover;
+		}
+	  }
+  
+	  .product-category-description {
+		padding: 1rem;
+  
+		h2 {
+		  font-size: 1.25rem;
+		  margin-bottom: 0.5rem;
+		  color: #333;
+		}
+  
+		p {
+		  font-size: 0.875rem;
+		  color: #666;
+		  margin-bottom: 0.5rem;
+		}
+  
+		.button-cta {
+		  display: inline-block;
+		  margin-top: 0.5rem;
+		  padding: 0.5rem 1rem;
+		  background-color: #0070f3;
+		  color: #fff;
+		  border-radius: 4px;
+		  font-size: 0.875rem;
+		  text-align: center;
+		  text-decoration: none;
+		  transition: background-color 0.3s ease;
+  
+		  &:hover {
+			background-color: #005bb5;
+		  }
+		}
+	  }
+	}
+  
+	// Responsive Design
+	@media (max-width: 1024px) {
+	  .product-category {
+		width: calc(50% - 1rem); // 2 items per row
+	  }
+	}
+  
+	@media (max-width: 768px) {
+	  .product-category {
+		width: calc(100% - 1rem); // 1 item per row
+	  }
+	}
+  }
+
+
+  //promo tiles
+
+  .promotions-featured {
+	background-color: #f9f9f9;
+	padding: 2rem 0;
+  
+	.content_wrapper {
+	  max-width: 1200px;
+	  margin: 0 auto;
+	  padding: 0 1rem;
+	}
+  
+	.promotions-featured-row {
+	  display: flex;
+	  flex-wrap: wrap;
+	  gap: 1.5rem;
+	  justify-content: center;
+	}
+  
+	.promotions-featured-column {
+	  flex: 1 1 calc(33.333% - 1rem);
+	  max-width: 300px;
+	  background-color: #fff;
+	  border: 1px solid #eaeaea;
+	  border-radius: 8px;
+	  overflow: hidden;
+	  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+	  &:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	  }
+  
+	  .rich-text {
+		padding: 1rem;
+  
+		.promotions-description {
+		  h2 {
+			font-size: 1.25rem;
+			margin-bottom: 0.5rem;
+		  }
+  
+		  .button-cta {
+			display: inline-block;
+			margin-top: 0.5rem;
+			padding: 0.5rem 1rem;
+			background-color: #0070f3;
+			color: #fff;
+			border-radius: 4px;
+			text-align: center;
+			text-decoration: none;
+  
+			&:hover {
+			  background-color: #005bb5;
+			}
+		  }
+		}
+	  }
+	}
+  }
