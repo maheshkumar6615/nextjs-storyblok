@@ -6,7 +6,7 @@ export default async function SiteConfigPage({ params }: { params: { lang: strin
     return <NotFoundPage />;
   }
   
-  const siteConfig = await getSiteConfig(params.lang, "eggos");
+  const siteConfig = await getSiteConfig(params.lang, "ricekrispies");
 
   if (!siteConfig) return <p>No configuration found!</p>;
 

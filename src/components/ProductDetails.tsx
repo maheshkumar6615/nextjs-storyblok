@@ -5,12 +5,16 @@ interface ProductDetailsProps {
   image: string;
   title: string;
   description: string;
+  staticContent: {
+    whereToBuyCtaText: string;
+  };
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({
   image,
   title,
   description,
+  staticContent
 }) => {
   const imageUrl = image.startsWith("//") ? `https:${image}` : image;
 
@@ -31,6 +35,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
           dangerouslySetInnerHTML={{ __html: title }}
         />
         <p className="product-description text-gray-700">{description}</p>
+        <a href="#" className="button-cta" data-event="ps-widget-pdp">{staticContent.whereToBuyCtaText}</a>
       </div>
     </div>
   );

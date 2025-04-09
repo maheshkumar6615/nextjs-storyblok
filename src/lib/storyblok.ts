@@ -8,6 +8,9 @@ import Product from "@/components/Product";
 import PromotionCard from "@/components/PromotionCard";
 import CategoryGrid from "@/components/CategoryGrid";
 import PromoTiles from "@/components/PromoTiles";
+import Wytiwg from "@/components/Wytiwg";
+import ProductPage from "@/components/ProductPage";
+import ProductList from "@/components/ProductList";
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.STORYBLOK_TOKEN,
@@ -24,7 +27,10 @@ export const getStoryblokApi = storyblokInit({
     promotionCard: PromotionCard,
     product: Product,
     categoryGrid: CategoryGrid,
-    promoTiles: PromoTiles
+    promoTiles: PromoTiles,
+    wytiwg: Wytiwg,
+    productPage: ProductPage,
+    productList: ProductList,
   },
   enableFallbackComponent: true,
 });

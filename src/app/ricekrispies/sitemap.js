@@ -6,7 +6,7 @@ const fetchAllPages = async () => {
     const response = await client.get(`cdn/stories`, {
       version: process.env.VERSION === "preview" ? "draft" : "published",
       cv: Date.now(),
-      starts_with: "eggos",
+      starts_with: "ricekrispies",
     });
     return response?.data?.stories || [];
   }catch(error){

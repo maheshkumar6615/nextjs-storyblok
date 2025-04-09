@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../../../styles/globals.css";
+import "../../../styles/common.scss";
 import { StoryblokProvider } from "../../../components/StoryblokProvider";
 import Navigation from "../../../components/Navigation";
 import Footer from "../../../components/footerNavigation";
@@ -22,11 +23,11 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  const siteConfig = await getSiteConfig(params.lang, "eggos");
+  const siteConfig = await getSiteConfig(params.lang, "ricekrispies");
 
   return (
     <StoryblokProvider>
-      <html lang="en" data-theme={siteConfig?.content?.site || "eggos"}>
+      <html lang="en" data-theme={siteConfig?.content?.site || "ricekrispies"}>
       <head>
           <link rel="icon" href={siteConfig?.content?.favicon?.filename || "favicon.ico"} />
         </head>

@@ -1,5 +1,4 @@
 import React from "react";
-import ProductDetails from "@/components/ProductDetails";
 import CookingInstructions from "@/components/CookingInstructions";
 import { getStoryblokApi } from "@/lib/storyblok";
 import NotFoundPage from "@/app/404";
@@ -11,7 +10,7 @@ const fetchProductPage = async (lang: string, slug: string) => {
     const productData = await productResponse.json();
 
     const client = getStoryblokApi();
-    const productRelated = await client.get(`cdn/stories/eggos/${lang}/recipes/${slug}`, {
+    const productRelated = await client.get(`cdn/stories/ricekrispies/${lang}/recipes/${slug}`, {
       version: process.env.VERSION === "preview" ? "draft" : "published",
       cv: Date.now(),
     });
@@ -35,11 +34,6 @@ const ProductPage = async ({ params }: { params: { lang: string; slug: string } 
 
   return (
       <div className="p-8">
-        <ProductDetails
-          image={data.product.recipeToPrimaryImage}
-          title={data.product.recipeWebName}
-          description={data.product.recipeDescription}
-        />
         <CookingInstructions instructions={data.product.recipeDirections} />
         <StoryblokStory story={data.productRelated} />
       </div>
