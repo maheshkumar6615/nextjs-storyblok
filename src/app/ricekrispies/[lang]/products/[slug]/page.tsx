@@ -2,14 +2,15 @@ import React from "react";
 import ProductDetails from "@/components/ProductDetails";
 import { getStoryblokApi } from "@/lib/storyblok";
 import NotFoundPage from "@/app/404";
-import { console } from "inspector";
 import Nutrition from "@/components/Nutrition";
 import RelatedProducts from "@/components/RelatedProducts";
 import { StoryblokStory } from "@storyblok/react/rsc";
 
 const fetchProductPage = async (lang: string, slug: string) => {
   try {
-    const productResponse = await fetch(`http://ab0810a8654c442c3a1b9d521f979f17-1571552794.us-east-1.elb.amazonaws.com/api/products/${slug}`);
+    const baseUrl = process.env.AWS_IPADDRESS; // Use environment variable
+
+    const productResponse = await fetch(`${baseUrl}/api/products/${slug}`);
     const productData = await productResponse.json();
 
     const client = getStoryblokApi();
@@ -21,8 +22,8 @@ const fetchProductPage = async (lang: string, slug: string) => {
     const productPageBlok = productRelated?.data?.story?.content?.body?.find(
       (blok: any) => blok.component === "productPage"
     );
-    
-    const relatedProductsResponse = await fetch(`http://ab0810a8654c442c3a1b9d521f979f17-1571552794.us-east-1.elb.amazonaws.com/api/related-products/${slug}`);
+
+    const relatedProductsResponse = await fetch(`${baseUrl}/api/related-products/${slug}`);
     const relatedProducts = await relatedProductsResponse.json();
 
     return {
@@ -45,27 +46,40 @@ const ProductPage = async ({ params }: { params: { lang: string; slug: string } 
   }
 
   return (
-      <div className="p-8">
-        <ProductDetails
-          image={data.product.productToPrimaryImage}
-          title={data.product.webProductFullName}
-          description={data.product.productDescription}
-          staticContent={data?.productPageBlok}
-        />
-        <Nutrition staticContent={data?.productPageBlok}/>
-        <RelatedProducts 
-        staticContent={data?.productPageBlok} 
+    <div className="p-8">
+      <ProductDetails
+        image={data.product.productToPrimaryImage}
+        title={data.product.webProductFullName}
+        description={data.product.productDescription}
+        staticContent={data?.productPageBlok}
+      />
+      <Nutrition staticContent={data?.productPageBlok} />
+      <RelatedProducts
+        staticContent={data?.productPageBlok}
         relatedProducts={data.relatedProducts}
-        />
-        <StoryblokStory story={data.productRelated} />
-      </div>
+      />
+      <StoryblokStory story={data.productRelated} />
+    </div>
   );
 };
 
-
 export async function generateStaticParams() {
+  const baseUrl = process.env.AWS_IPADDRESS; // Use environment variable
   const languages = ["en-us", "es-us"];
-  return languages.map((lang) => ({ lang }));
+
+  // Fetch all product slugs from the API
+  const productResponse = await fetch(`${baseUrl}/api/products`);
+  const products = await productResponse.json();
+
+  // Generate paths for each language and product slug
+  const paths = [];
+  for (const lang of languages) {
+    for (const product of products) {
+      paths.push({ lang, slug: product.seoName });
+    }
+  }
+
+  return paths;
 }
 
 export default ProductPage;

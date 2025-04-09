@@ -9,8 +9,8 @@ const fetchPageData = async (lang: string, slug: string) => {
       cv: Date.now(),
     });
 
-    const productResponse = await fetch(
-      `http://a6ea4395e957e4f238c70d2fe5eac49c-1561507186.us-east-1.elb.amazonaws.com/api/get-products-by-category/${slug}`
+    const baseUrl = process.env.AWS_IPADDRESS
+    const productResponse = await fetch(`${baseUrl}/api/get-products-by-category/${slug}`
     );
     if (!productResponse.ok) {
       throw new Error("Failed to fetch products");

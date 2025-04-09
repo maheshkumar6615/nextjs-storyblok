@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface RelatedProduct {
   productToPrimaryImage: string;
@@ -27,15 +28,20 @@ const RelatedProducts = ({ relatedProducts, staticContent }: RelatedProductsProp
             href={`${product.seoName}`}
             className="related-product-card"
           >
-            <img
-              src={
-                product.productToPrimaryImage.startsWith("//")
-                  ? `https:${product.productToPrimaryImage}`
-                  : product.productToPrimaryImage
-              }
-              alt={product.seoName}
-              className="related-product-image"
-            />
+            <div className="related-product-image-wrapper">
+              <Image
+                src={
+                  product.productToPrimaryImage.startsWith("//")
+                    ? `https:${product.productToPrimaryImage}`
+                    : product.productToPrimaryImage
+                }
+                alt={product.webProductFullName || "Related Product"}
+                className="related-product-image"
+                width={300} // Set appropriate width
+                height={300} // Set appropriate height
+                layout="responsive" // Maintain aspect ratio
+              />
+            </div>
             <span className="related-product-title">
               {product.webProductFullName}
             </span>
