@@ -12,19 +12,19 @@ interface Product {
 interface ProductListProps {
   blok: {
     products: Product[];
+    lang: string;
   };
 }
 
 const ProductList = ({ blok }: ProductListProps) => {
   const products = blok.products || [];
-
   return (
     <div className="content_wrapper" {...storyblokEditable(blok)}>
       <div className="products-list">
         {products.map((product) => (
           <div key={product.stepId} className="products-list-product">
             <a
-              href={`/products/${product.seoName}`}
+              href={`/ricekrispies/${blok.lang}/products/${product.seoName}`}
               title={product.webProductFullName}
               className="track"
             >

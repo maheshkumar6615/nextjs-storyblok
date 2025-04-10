@@ -29,6 +29,7 @@ const fetchPageData = async (lang: string, slug: string) => {
 
 const Page = async ({ params }: { params: { lang: string; slug: string } }) => {
   const data = await fetchPageData(params.lang, params.slug);
+  console.log("language", params.lang);
 
   if (!data || !data.story) {
     return <div>Page not found</div>;
@@ -43,6 +44,7 @@ const Page = async ({ params }: { params: { lang: string; slug: string } }) => {
           return {
             ...blok,
             products: data.products,
+            lang: params.lang,
           };
         }
         return blok;

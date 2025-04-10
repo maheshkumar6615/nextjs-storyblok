@@ -8,7 +8,7 @@ import { StoryblokStory } from "@storyblok/react/rsc";
 
 const fetchProductPage = async (lang: string, slug: string) => {
   try {
-    const baseUrl = process.env.AWS_IPADDRESS; // Use environment variable
+    const baseUrl = process.env.AWS_IPADDRESS; 
 
     const productResponse = await fetch(`${baseUrl}/api/products/${slug}`);
     const productData = await productResponse.json();
@@ -64,14 +64,12 @@ const ProductPage = async ({ params }: { params: { lang: string; slug: string } 
 };
 
 export async function generateStaticParams() {
-  const baseUrl = process.env.AWS_IPADDRESS; // Use environment variable
+  const baseUrl = process.env.AWS_IPADDRESS;
   const languages = ["en-us", "es-us"];
 
-  // Fetch all product slugs from the API
   const productResponse = await fetch(`${baseUrl}/api/products`);
   const products = await productResponse.json();
 
-  // Generate paths for each language and product slug
   const paths = [];
   for (const lang of languages) {
     for (const product of products) {

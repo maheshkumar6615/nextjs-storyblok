@@ -26,6 +26,16 @@ module.exports = {
         ],
         destination: '/eggos/:path*',
       },
+      // {
+      //   source: '/:path*',
+      //   has: [
+      //     {
+      //       type: 'host',
+      //       value: 'localhost',
+      //     },
+      //   ],
+      //   destination: '/ricekrispies/:path*',
+      // },
     ];
   },
 };

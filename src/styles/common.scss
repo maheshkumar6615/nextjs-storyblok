@@ -1,3 +1,10 @@
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
 .header {
 	background-color: #fff;
 	border-bottom: 1px solid #eaeaea;
@@ -305,8 +312,7 @@ footer {
   //promo tiles
 
   .promotions-featured {
-	background-color: #f9f9f9;
-	padding: 2rem 0;
+	padding: 5rem 0;
   
 	.content_wrapper {
 	  max-width: 1200px;
@@ -317,7 +323,7 @@ footer {
 	.promotions-featured-row {
 	  display: flex;
 	  flex-wrap: wrap;
-	  gap: 1.5rem;
+	  gap: 5rem;
 	  justify-content: center;
 	}
   
