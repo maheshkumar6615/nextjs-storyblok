@@ -11,6 +11,10 @@ import PromoTiles from "@/components/PromoTiles";
 import Wytiwg from "@/components/Wytiwg";
 import ProductPage from "@/components/ProductPage";
 import ProductList from "@/components/ProductList";
+import RecipeDetails from "@/components/RecipeDetails";
+import RecipeProducts from "@/components/RecipeProducts";
+import RelatedRecipes from "@/components/RelatedRecipes";
+import RecipeList from "@/components/RecipeList";
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.STORYBLOK_TOKEN,
@@ -31,6 +35,10 @@ export const getStoryblokApi = storyblokInit({
     wytiwg: Wytiwg,
     productPage: ProductPage,
     productList: ProductList,
+    recipeKeyDetails: RecipeDetails,
+    recipeProducts: RecipeProducts,
+    relatedRecipes : RelatedRecipes,
+    recipeList: RecipeList
   },
   enableFallbackComponent: true,
 });

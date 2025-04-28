@@ -6,7 +6,7 @@ import Nutrition from "@/components/Nutrition";
 import RelatedProducts from "@/components/RelatedProducts";
 import { StoryblokStory } from "@storyblok/react/rsc";
 
-const fetchProductPage = async (lang: string, slug: string) => {
+const fetchProductPage = async (slug: string) => {
   try {
     const baseUrl = process.env.AWS_IPADDRESS; 
 
@@ -14,7 +14,7 @@ const fetchProductPage = async (lang: string, slug: string) => {
     const productData = await productResponse.json();
 
     const client = getStoryblokApi();
-    const productRelated = await client.get(`cdn/stories/ricekrispies/${lang}/product-config`, {
+    const productRelated = await client.get(`cdn/stories/ricekrispies/templates/product-template`, {
       version: process.env.VERSION === "preview" ? "draft" : "published",
       cv: Date.now(),
     });
@@ -39,7 +39,7 @@ const fetchProductPage = async (lang: string, slug: string) => {
 };
 
 const ProductPage = async ({ params }: { params: { lang: string; slug: string } }) => {
-  const data = await fetchProductPage(params.lang, params.slug);
+  const data = await fetchProductPage(params.slug);
 
   if (!data || !data.product || !data.productRelated) {
     return <NotFoundPage />;

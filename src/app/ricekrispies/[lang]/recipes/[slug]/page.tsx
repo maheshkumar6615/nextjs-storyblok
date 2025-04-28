@@ -1,23 +1,24 @@
 import React from "react";
-import CookingInstructions from "@/components/CookingInstructions";
 import { getStoryblokApi } from "@/lib/storyblok";
 import NotFoundPage from "@/app/404";
 import { StoryblokStory } from "@storyblok/react/rsc";
 
-const fetchProductPage = async (lang: string, slug: string) => {
+const fetchRecipePage = async (slug: string) => {
   try {
-    const productResponse = await fetch(`http://aa1df0c726915438cba6057483f83693-1907848014.us-east-1.elb.amazonaws.com/api/recipes/${slug}`);
-    const productData = await productResponse.json();
+    const baseUrl = process.env.AWS_IPADDRESS; 
+
+    const recipeResponse = await fetch(`${baseUrl}/api/recipes/${slug}`);
+    const recipeData = await recipeResponse.json();
 
     const client = getStoryblokApi();
-    const productRelated = await client.get(`cdn/stories/ricekrispies/${lang}/recipes/${slug}`, {
+    const storyResponse = await client.get(`cdn/stories/ricekrispies/templates/recipe-template`, {
       version: process.env.VERSION === "preview" ? "draft" : "published",
       cv: Date.now(),
     });
 
     return {
-      product: productData,
-      productRelated: productRelated?.data?.story,
+      recipe: recipeData,
+      story: storyResponse?.data?.story,
     };
   } catch (error) {
     console.error("Error fetching page:", error);
@@ -25,36 +26,46 @@ const fetchProductPage = async (lang: string, slug: string) => {
   }
 };
 
-const ProductPage = async ({ params }: { params: { lang: string; slug: string } }) => {
-  const data = await fetchProductPage(params.lang, params.slug);
+const RecipePage = async ({ params }: { params: { lang: string; slug: string } }) => {
+  const data = await fetchRecipePage(params.slug);
 
-  if (!data || !data.product || !data.productRelated) {
+  if (!data || !data.recipe || !data.story) {
     return <NotFoundPage />;
   }
 
+  const modifiedStory = {
+    content: {
+      ...data.story.content,
+      body: Array.isArray(data.story.content.body)
+        ? data.story.content.body.map((blok: any) => ({
+            ...blok,
+            recipe: data.recipe
+          }))
+        : [],
+    },
+  };
   return (
-      <div className="p-8">
-        <CookingInstructions instructions={data.product.recipeDirections} />
-        <StoryblokStory story={data.productRelated} />
-      </div>
+    <div className="p-8">
+      <StoryblokStory story={modifiedStory} />
+    </div>
   );
 };
 
 export async function generateStaticParams() {
+  const baseUrl = process.env.AWS_IPADDRESS;
   const languages = ["en-us", "es-us"];
-  const client = getStoryblokApi();
-  const { data } = await client.get("cdn/links/");
 
-  const paths: { lang: string; slug: string; }[] = [];
+  const recipeResponse = await fetch(`${baseUrl}/api/recipes`);
+  const recipes = await recipeResponse.json();
 
-  languages.forEach((lang) => {
-    Object.keys(data.links).forEach((slug) => {
-      if (slug.startsWith(`${lang}/products/`)) {
-        paths.push({ lang, slug: slug.replace(`${lang}/products/`, "") });
-      }
-    });
-  });
+  const paths = [];
+  for (const lang of languages) {
+    for (const recipe of recipes) {
+      paths.push({ lang, slug: recipe.seoName });
+    }
+  }
+
   return paths;
 }
 
-export default ProductPage;
+export default RecipePage;

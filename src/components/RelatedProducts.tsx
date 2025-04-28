@@ -37,14 +37,15 @@ const RelatedProducts = ({ relatedProducts, staticContent }: RelatedProductsProp
                 }
                 alt={product.webProductFullName || "Related Product"}
                 className="related-product-image"
-                width={300} // Set appropriate width
-                height={300} // Set appropriate height
-                layout="responsive" // Maintain aspect ratio
+                width={300} 
+                height={300}
+                layout="responsive"
               />
             </div>
-            <span className="related-product-title">
-              {product.webProductFullName}
-            </span>
+            <span
+              className="related-product-title"
+              dangerouslySetInnerHTML={{ __html: product.webProductFullName || "Unnamed product" }}
+            ></span>
           </a>
         ))}
       </div>

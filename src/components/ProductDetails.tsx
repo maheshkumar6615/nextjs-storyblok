@@ -34,7 +34,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
           className="product-title text-2xl font-bold mb-2"
           dangerouslySetInnerHTML={{ __html: title }}
         />
-        <p className="product-description text-gray-700">{description}</p>
+        <p className="product-description text-gray-700" dangerouslySetInnerHTML={{ __html: description }}></p>
         <a href="#" className="button-cta" data-event="ps-widget-pdp">{staticContent.whereToBuyCtaText}</a>
       </div>
     </div>
