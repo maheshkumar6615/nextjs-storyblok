@@ -15,6 +15,7 @@ import RecipeDetails from "@/components/RecipeDetails";
 import RecipeProducts from "@/components/RecipeProducts";
 import RelatedRecipes from "@/components/RelatedRecipes";
 import RecipeList from "@/components/RecipeList";
+import Hero from "@/components/Hero";
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.STORYBLOK_TOKEN,
@@ -38,7 +39,8 @@ export const getStoryblokApi = storyblokInit({
     recipeKeyDetails: RecipeDetails,
     recipeProducts: RecipeProducts,
     relatedRecipes : RelatedRecipes,
-    recipeList: RecipeList
+    recipeList: RecipeList,
+    hero: Hero
   },
   enableFallbackComponent: true,
 });

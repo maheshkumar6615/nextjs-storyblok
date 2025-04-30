@@ -2,7 +2,7 @@ import Image from "next/image";
 
 interface SocialIcon {
   _uid: string;
-  platform: string; // Format: "https://www.platform.com@PlatformName@iconBase64"
+  platform: string;
   userName: string;
 }
 
@@ -18,12 +18,7 @@ const SocialIcons = ({
   copyRightDescription,
 }: SocialIconsProps) => {
   return (
-    <div className="content_wrapper">
-      <p className="copyright text-gray-500 text-sm mt-4">
-        {copyRightSymbol} {copyRightDescription}
-      </p>
-
-      {/* Social Links */}
+    <div className="social-icons-wrapper">
       <div id="sociallinks" className="social_icons">
         {socialIcons.map((socialIcon) => {
           const [link, title, icon] = socialIcon.platform.split("@");
@@ -35,8 +30,15 @@ const SocialIcons = ({
               aria-label={title}
               target="_blank"
               rel="noopener noreferrer"
-              className="social-icon">
-              <Image src={icon} alt={title} className="social-icon-img" width={24} height={24} />
+              className="social-icon"
+            >
+              <Image
+                src={icon}
+                alt={title}
+                className="social-icon-img"
+                width={24}
+                height={24}
+              />
               <span className={`${title.toLowerCase()}-icon-span`}>
                 {title}
               </span>
@@ -44,6 +46,9 @@ const SocialIcons = ({
           );
         })}
       </div>
+      <p className="copyright">
+        {copyRightSymbol} {copyRightDescription}
+      </p>
     </div>
   );
 };

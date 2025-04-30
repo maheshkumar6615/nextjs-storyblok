@@ -45,19 +45,26 @@ const FooterNavigation = ({ footerBlocks }: FooterProps) => (
       <nav className="footer-nav--main" aria-label="footer main navigation">
         <ul>
           {footerBlocks.map((block) =>
-            block.linkItem.map((linkItem) => (
-              <li key={linkItem._uid}>
-                <Link
-                  href={linkItem.linkPath.cached_url}
-                  target={linkItem.openLinkInNewTab ? "_blank" : "_self"}
-                  aria-label={linkItem.ariaLabel}
-                  data-event={linkItem.eventTrigger}
-                  className="hover:text-gray-300"
-                >
-                  {linkItem.linkTitle}
-                </Link>
-              </li>
-            ))
+            block.linkItem.map((linkItem) => {
+              // Ensure the href starts with "/" if it's a relative path
+              const href = linkItem.linkPath.cached_url.startsWith("/")
+                ? linkItem.linkPath.cached_url
+                : `/${linkItem.linkPath.cached_url}`;
+
+              return (
+                <li key={linkItem._uid}>
+                  <Link
+                    href={href}
+                    target={linkItem.openLinkInNewTab ? "_blank" : "_self"}
+                    aria-label={linkItem.ariaLabel}
+                    data-event={linkItem.eventTrigger}
+                    className="hover:text-gray-300"
+                  >
+                    {linkItem.linkTitle}
+                  </Link>
+                </li>
+              );
+            })
           )}
         </ul>
       </nav>
