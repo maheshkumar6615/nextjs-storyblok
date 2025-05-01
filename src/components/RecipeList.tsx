@@ -60,17 +60,6 @@ const RecipeList = ({ blok }: RecipeListProps) => {
                   className="recipe-list-title"
                   dangerouslySetInnerHTML={{ __html: recipe.recipeWebName }}
                 ></div>
-                <p className="recipe-description">
-                  {recipe.recipeDescription || "No description available"}
-                </p>
-                <div className="recipe-times">
-                  <span className="prep-time">
-                    Prep Time: {recipe.prepTime || "N/A"} mins
-                  </span>
-                  <span className="total-time">
-                    Total Time: {recipe.totalTime || "N/A"} mins
-                  </span>
-                </div>
               </div>
             </a>
           </div>
